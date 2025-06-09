@@ -11,9 +11,9 @@ const Preloader = ({ show }) => {
           exit={{ opacity: 0, transition: { duration: 0.8 } }}
         >
           <motion.img
-            src="/healthcarelogo1.png"
+            src="/OST-logo.png"
             alt="Logo"
-            className="w-28 h-28 drop-shadow-xl"
+            className="w-38 h-28 drop-shadow-xl"
             initial={{ scale: 0.5, opacity: 0, rotate: -180 }}
             animate={{
               scale: [0.5, 1.2, 1],

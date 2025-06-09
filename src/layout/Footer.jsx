@@ -5,18 +5,18 @@ const Footer = () => {
   const news = [
     {
       date: "Jan 23",
-      title: "Daily Exercise is Essential",
-      description: "When was the last time you went out for a...",
+      title: "Understanding Your Legal Rights",
+      description: "When was the last time you reviewed your legal documents or rights?",
     },
     {
       date: "Jan 30",
-      title: "Medical Advice for All Ages and Sexes",
-      description: "How often does a post start with all these words? Allergy...",
+      title: "Legal Guidance for Families and Businesses",
+      description: "From custody battles to contract disputes—legal help tailored for everyone.",
     },
     {
       date: "Feb 15",
-      title: "Diabetes Diet and Healthy Food Tips",
-      description: "Let’s talk about what is health and how can this...",
+      title: "How to Choose the Right Attorney",
+      description: "Let’s talk about finding trusted legal help and what to look for in a law firm.",
     },
   ];
   return (
@@ -28,8 +28,7 @@ const Footer = () => {
           ⚖️ <span>Law Firm</span>
         </div>
           <p className="mt-3 text-gray-300">
-            Premium medical-oriented theme, flexible enough for any "Health &
-            Beauty" related business!
+            Premium legal-focused theme, flexible enough for any "Law & Justice" related business!
           </p>
 
           {/* Contact Info */}
@@ -40,7 +39,7 @@ const Footer = () => {
             </div>
             <div className="flex items-center space-x-3">
               <div className="bg-blue-700 p-2 rounded">✉️</div>
-              <span>info@healthcareweb.com</span>
+              <span>info@lawfirmweb.com</span>
             </div>
             <div className="flex items-center space-x-3">
               <div className="bg-blue-700 p-2 rounded">📍</div>
@@ -56,13 +55,13 @@ const Footer = () => {
           </h3>
           <ul className="mt-3 space-y-2 text-gray-300">
             {[
-              "All Medical Services",
-              "Appointment Booking",
+              "All Legal Services  ",
+              "Book a Consultation",
               "FAQ",
-              "Fees & Insurance",
-              "Health Library A-Z",
-              "Shop",
-              "Free Checkup Offer",
+              "Fees & Payment",
+              " Legal Resources  ",
+              " Case Studies",
+              " Free First Consultation",
             ].map((link, index) => (
               <li key={index}>
                 <a href="#" className="hover:text-blue-400">

@@ -1,10 +1,12 @@
 import React from "react";
 import Footer from "../layout/Footer";
-import {Link} from 'react-scroll';
+import { Button, Link } from "react-scroll";
 import Disclaimer from "../layout/Disclaimer";
 import Disclaime from "../layout/Disclame";
+import { useState } from "react";
 
 const LawFirmPage = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const blogs = [
     {
       image: "/blog11.jpg",
@@ -38,6 +40,8 @@ const LawFirmPage = () => {
         <div className="text-2xl font-bold text-yellow-800 flex items-center gap-2">
           ⚖️ <span>Law Firm</span>
         </div>
+
+        {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 font-medium text-gray-800">
           {[
             { label: "HOME", to: "home" },
@@ -53,7 +57,7 @@ const LawFirmPage = () => {
                 to={to}
                 spy={true}
                 smooth={true}
-                offset={-80} // Adjust based on navbar height
+                offset={-80}
                 duration={500}
                 className="cursor-pointer hover:text-yellow-600"
               >
@@ -62,11 +66,50 @@ const LawFirmPage = () => {
             </li>
           ))}
         </ul>
+
+        {/* Mobile Hamburger */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-2xl text-gray-800 focus:outline-none"
+          >
+            ☰
+          </button>
+        </div>
       </nav>
-       <Disclaime/>
+
+     {menuOpen && (
+  <ul className="md:hidden flex flex-col gap-4 p-4 bg-white shadow-md fixed top-[64px] left-0 w-full z-50">
+    {[
+      { label: "HOME", to: "home" },
+      { label: "ABOUT", to: "about" },
+      { label: "PRACTICE AREAS", to: "practice" },
+      { label: "ATTORNEY", to: "attorneys" },
+      { label: "BLOG", to: "blog" },
+      { label: "CONTACT", to: "contact" },
+    ].map(({ label, to }, i) => (
+      <li key={i}>
+        <Link
+          activeClass="text-yellow-700 font-bold"
+          to={to}
+          spy={true}
+          smooth={true}
+          offset={-80}
+          duration={500}
+          className="cursor-pointer hover:text-yellow-600 block"
+          onClick={() => setMenuOpen(false)}
+        >
+          {label}
+        </Link>
+      </li>
+    ))}
+  </ul>
+)}
+
+      <Disclaime />
       {/* Hero Section */}
       <header
-        id='home'
+        id="home"
         className="relative h-screen bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/parliament.jpg')" }}
       >
@@ -78,23 +121,33 @@ const LawFirmPage = () => {
             <p className="text-white text-lg md:text-xl mb-6">
               Aenean tellus vitae ex rhoncus Sollicitudin
             </p>
-            <Link to ='/contact' className="bg-yellow-600 text-white text-2xl px-6 py-3 rounded hover:bg-yellow-700 transition">
+            <Link
+              to="contact"
+              spy={true}
+              smooth={true}
+              offset={-80} // Adjust based on navbar height
+              duration={500}
+              className="bg-yellow-600 text-white text-2xl px-6 py-3 rounded hover:bg-yellow-700 transition cursor-pointer inline-block"
+            >
               Talk to us
             </Link>
           </div>
         </div>
       </header>
-       <Disclaimer/>
+      <Disclaimer />
 
       {/* About Section */}
-      <section id="about" className="flex flex-col md:flex-row items-center justify-center py-16 px-32 bg-white">
+      <section
+        id="about"
+        className="flex flex-col md:flex-row items-center justify-center md:py-16 md:px-32 px-4 py-6 bg-white w-full"
+      >
         <img
           src="/laywer1.jpg"
           alt="lawyer"
-          className="w-[50%]  h-[40%] md:w-[40%] rounded-xl"
+          className="w-[100%] md:h-[40%] md:w-[40%] rounded-xl"
         />
-        <div className="md:ml-12 mt-6 md:mt-0 flex flex-col gap-4 justify-center items-start w-[60%]">
-          <h2 className="text-5xl font-semibold mb-4">
+        <div className="md:ml-12 mt-6 md:mt-0 flex flex-col gap-4 justify-center items-start md:w-[60%] w-full">
+          <h2 className="text-2xl md:text-5xl font-semibold mb-4">
             OVER 20 YEARS OF EXPERIENCE
           </h2>
           <h2 className="text-3xl font-semibold mb-4">FOUNDER IN 2014</h2>
@@ -108,9 +161,9 @@ const LawFirmPage = () => {
           </button>
         </div>
       </section>
- 
+
       {/* Practice Areas */}
-      <section id="practice"  className="bg-gray-50 py-16 px-10">
+      <section id="practice" className="bg-gray-50 py-16 px-10">
         <h2 className="text-center text-3xl font-bold mb-10">PRACTICE AREAS</h2>
         <div className="flex w-full flex-col md:flex-row justify-center flex-wrap gap-6">
           {["Family Law", "Accident Law", "Business Law"].map((area, i) => (
@@ -161,7 +214,7 @@ const LawFirmPage = () => {
         </div>
       </section>
 
-          {/* Blogs */}
+      {/* Blogs */}
       <section id="blog" className="py-12 px-4 md:px-12 lg:px-24 bg-white">
         <div className="flex flex-col gap-8">
           {blogs.map((blog, index) => {
@@ -196,7 +249,10 @@ const LawFirmPage = () => {
       </section>
 
       {/* Map + Contact */}
-      <section id="contact"  className="flex flex-col lg:flex-row gap-10 py-16 px-20 bg-gray-50">
+      <section
+        id="contact"
+        className="flex flex-col lg:flex-row gap-10 md:py-16 md:px-20 py-4 px-6 bg-gray-50"
+      >
         <div className="flex-1 gap-6">
           <h3 className="text-5xl font-bold mb-4">LAW-FIRM COUNTRY</h3>
           <p className="text-gray-600 mb-4">
@@ -240,8 +296,8 @@ const LawFirmPage = () => {
 
           {/* Subject - full width */}
           <input
-            type="text"
-            placeholder="Subject"
+            type="phone number"
+            placeholder="Enter Phone Number"
             className="border p-3 rounded w-full"
           />
 
@@ -281,4 +337,3 @@ const LawFirmPage = () => {
 };
 
 export default LawFirmPage;
-

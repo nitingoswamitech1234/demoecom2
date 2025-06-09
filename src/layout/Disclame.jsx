@@ -1,12 +1,12 @@
 const Disclaime = () => {
   return (
-    <div className="w-full bg-[#210606] text-white font-semibold overflow-hidden z-50 top-16 fixed">
+    <div className="w-full bg-[#210606] text-white font-semibold overflow-hidden z-40 top-16 fixed">
       <div className="whitespace-nowrap animate-marquee px-4 py-2">
         ⚠️ Disclaimer: Who We are Law Firm is established with a
         vision to provide a comprehensive legal solution to every legal need of
         its clients with the best legal knowledge and acumen coming from the
         experienced Lawyers and Advocates. Expert and learned lawyers of
-        Vidhikarya are highly dedicated and digitally equipped to deliver fast
+        lawfirm are highly dedicated and digitally equipped to deliver fast
         and reliable solution to clients in this fast-paced world. We are a Law
         Firm having expertise to handle all kinds of legal matters in all three
         aspects of legal services viz. Litigation & ADR, Advisory and Legal
