@@ -11,7 +11,7 @@ const Preloader = ({ show }) => {
           exit={{ opacity: 0, transition: { duration: 0.8 } }}
         >
           <motion.img
-            src="/OST-logo.png"
+            src="/lawfirm.webp"
             alt="Logo"
             className="w-38 h-28 drop-shadow-xl"
             initial={{ scale: 0.5, opacity: 0, rotate: -180 }}
