@@ -7,7 +7,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { Mail, Phone, MapPin } from 'lucide-react';
 
-const sentence1 = "Timeless British Hardware for Modern Spaces";
+const sentence1 = "Timeless Hardware for Modern Spaces";
 const sentence2 = "ELEGANT DETAILS FOR HOMES OF CHARACTER AND CHARM";
 
 const container = {
