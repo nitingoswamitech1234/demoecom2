@@ -17,9 +17,9 @@ const Navbar = () => {
 
   return (
     <header className="w-full px-6 py-4 shadow-sm bg-[#def0dd] z-50 relative">
-      <div className="max-w-7xl mx-auto flex flex-col items-start justify-center">
+      <div className="max-w-7xl mx-auto flex flex-col items-center justify-center">
         {/* Top: Search + Logo + Hamburger */}
-        <div className="w-full  flex items-center justify-between mb-6">
+        <div className="w-full  flex items-center justify-between md:mb-6">
           <div className="text-gray-700 hidden md:block cursor-pointer">
             <Search size={20} />
           </div>
@@ -55,7 +55,7 @@ const Navbar = () => {
 
         {/* Mobile Nav */}
         {menuOpen && (
-          <div className="md:hidden flex flex-col items-start text-left gap-6 mt-2 text-sm font-medium tracking-wider text-gray-800">
+          <div className="md:hidden flex flex-col items-start text-left gap-6 mt-2 text-sm font-medium tracking-wider text-gray-800 border border-red-500">
             {navLinks.map((link, index) => (
               <a key={index} href="#" className="hover:text-black">
                 {link}
