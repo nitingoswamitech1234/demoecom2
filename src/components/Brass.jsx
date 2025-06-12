@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { Search } from "lucide-react";
 import Navbar from "./Navbar";
 import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import { Mail, Phone, MapPin } from 'lucide-react';
 
 const sentence1 = "Home of Timeless Craftsmanship";
 const sentence2 = "ELEGANT DETAILS FOR HOMES OF CHARACTER AND CHARM";
@@ -54,12 +54,12 @@ export default function HomePage() {
   const sliderRef = useRef(null);
 
   const categories = [
-    { name: "Door Hardware", image: "/doorlock.jpg", price: 1499 },
-    { name: "Window Hardware", image: "/windowlock.jpg", price: 699 },
-    { name: "Kitchen Accessories", image: "/cabinet.jpg", price: 1299 },
-    { name: "Door Handle", image: "/lock.jpg", price: 599 },
-    { name: "Drawer Knobs", image: "/drawer.jpg", price: 499 },
-    { name: "Curtain Holders", image: "/curtain.jpg", price: 499 },
+    { name: "Door Hardware", image: "/doorlock.webp", price: 1499 },
+    { name: "Window Hardware", image: "/windowlock.webp", price: 699 },
+    { name: "Kitchen Accessories", image: "/cabinet.webp", price: 1299 },
+    { name: "Door Handle", image: "/lock.webp", price: 599 },
+    { name: "Drawer Knobs", image: "/drawer.webp", price: 499 },
+    { name: "Curtain Holders", image: "/curtain.webp", price: 499 },
   ];
 
    const [quantities, setQuantities] = useState(
@@ -103,10 +103,12 @@ export default function HomePage() {
   }, []);
 
   const images = [
-    "/doorlock1.jpg",
-    "/doorlock3.jpg",
-    "/cabinet.jpg",
-    "/windowlock.jpg",
+    "/doorlock1.webp",
+    "/doorlock3.webp",
+    "/cabinet.webp",
+    "/windowlock.webp",
+    "/drawer.webp",
+    "/curtain.webp"
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -136,7 +138,7 @@ export default function HomePage() {
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover"
         >
-          <source src="/video1.mp4" type="video/mp4" />
+          <source src="/video2.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
@@ -378,21 +380,23 @@ export default function HomePage() {
 
       {/* Inquiry Form */}
 
-      <section
-        className="relative h-[100vh]  flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: "url('/lock.jpg')" }}
-      >
-        {/* Dark transparent overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-0"></div>
+     <section
+      className="relative md:h-[100vh] flex items-center justify-center bg-cover bg-center px-4"
+      style={{ backgroundImage: "url('/accessories.webp')" }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
-        {/* Centered Contact Form */}
-        <div className="relative z-10 bg-black bg-opacity-70 p-8 rounded-md w-full max-w-2xl">
-          <h2 className="text-white text-3xl text-center font-semibold uppercase">
+      {/* Main Container */}
+      <div className="relative z-10 bg-black bg-opacity-60 p-8 rounded-md w-full md:w-[60%] grid md:grid-cols-2 gap-8 items-center">
+        {/* Contact Form */}
+        <div>
+          <h2 className="text-white text-3xl font-semibold uppercase text-center md:text-left">
             HAVE A <span className="text-blue-400">QUESTION?</span>
           </h2>
-          <div className="h-1 w-20 bg-blue-400 mx-auto my-4"></div>
+          <div className="h-1 w-20 bg-blue-400 my-4 mx-auto md:mx-0"></div>
 
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form className="grid grid-cols-1 gap-4">
             <input
               type="text"
               placeholder="Name *"
@@ -416,10 +420,9 @@ export default function HomePage() {
             <textarea
               rows="4"
               placeholder="Message"
-              className="bg-transparent border p-3 text-white md:col-span-2 focus:outline-none"
+              className="bg-transparent border p-3 text-white focus:outline-none"
             ></textarea>
-
-            <div className="md:col-span-2 text-center">
+            <div className="text-center md:text-left">
               <button
                 type="submit"
                 className="px-8 py-2 mt-2 border text-white hover:bg-white hover:text-black transition"
@@ -429,7 +432,42 @@ export default function HomePage() {
             </div>
           </form>
         </div>
-      </section>
+
+        {/* Contact Info */}
+        <div className="text-white flex flex-col gap-6 text-center md:text-left">
+          <div className="flex items-start gap-4">
+            <Mail className="text-blue-400 mt-1" size={24} />
+            <div className="flex md:flex-col gap-4">
+              <h3 className="text-xl font-semibold mb-1 text-blue-400">Email</h3>
+              <p className="text-sm">support@brassman.com</p>
+              <p className="text-sm hidden md:block">sales@brassman.com</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <Phone className="text-blue-400 mt-1" size={24} />
+            <div className="flex md:flex-col gap-4">
+              <h3 className="text-xl font-semibold mb-1 text-blue-400">Phone</h3>
+              <p className="text-sm">+91 98765 43210</p>
+              <p className="text-sm hidden md:block">+91 91234 56789</p>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4">
+            <MapPin className="text-blue-400 mt-1" size={24} />
+            <div className="hidden md:block">
+              <h3 className="text-xl font-semibold mb-1 text-blue-400">Office</h3>
+              <p className="text-sm leading-relaxed">
+                BrassMan India Pvt. Ltd. <br />
+                123 Heritage Lane,<br />
+                Jaipur, Rajasthan – 302001
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
       {/* Testimonials */}
       <section className="py-12 px-4 md:px-16 bg-[#ecf6eb] text-center">

@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import { useState,useEffect } from "react";
 import "./App.css";
-import Home from "./components/Home";
-import Contact from "./components/Contact/Contact";
-import Service from "./components/Service";
-import Aboutus from "./components/Aboutus";
-import Department from "./components/Departments";
+// import Home from "./components/Home";
+// import Contact from "./components/Contact/Contact";
+// import Service from "./components/Service";
+// import Aboutus from "./components/Aboutus";
+// import Department from "./components/Departments";
 import Preloader from "./components/Preloader";
 import Homepage from "./components/Brass";
-import HomePage from "./components/Brass";
+// import HomePage from "./components/Brass";
 
   function App() {
   const [loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ import HomePage from "./components/Brass";
       </Routes>
 
       {/* Contact routes */}
-      <Routes>
+      {/* <Routes>
         <Route path="/contact" element={<Contact />} />
       </Routes>
 
@@ -36,7 +36,7 @@ import HomePage from "./components/Brass";
         <Route path="/service" element={<Service/>}/>
         <Route path="/about-us" element={<Aboutus/>}/>
         <Route path="/departments" element={<Department/>}/>
-       </Routes>
+       </Routes> */}
     </div>
   );
 }
