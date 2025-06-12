@@ -7,6 +7,8 @@ import Service from "./components/Service";
 import Aboutus from "./components/Aboutus";
 import Department from "./components/Departments";
 import Preloader from "./components/Preloader";
+import Homepage from "./components/Brass";
+import HomePage from "./components/Brass";
 
   function App() {
   const [loading, setLoading] = useState(true);
@@ -19,10 +21,10 @@ import Preloader from "./components/Preloader";
   return (
     <div>
       <Preloader show={loading} />
-      {/* {!loading && <Home />} */}
+      {!loading}
       {/* Home Routes */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Homepage />} />
       </Routes>
 
       {/* Contact routes */}
