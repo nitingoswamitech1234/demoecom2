@@ -7,7 +7,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import { Mail, Phone, MapPin } from 'lucide-react';
 
-const sentence1 = "Home of Timeless Craftsmanship";
+const sentence1 = "Timeless British Hardware for Modern Spaces";
 const sentence2 = "ELEGANT DETAILS FOR HOMES OF CHARACTER AND CHARM";
 
 const container = {
@@ -138,7 +138,7 @@ export default function HomePage() {
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover"
         >
-          <source src="/video2.mp4" type="video/mp4" />
+          <source src="/video3.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
@@ -152,7 +152,7 @@ export default function HomePage() {
               <div>
                 <motion.h1
                   key="line1"
-                  className="text-4xl md:text-2xl text-white flex flex-wrap gap-2"
+                  className="text-4xl md:text-2xl font-elegant tracking-wide leading-snug text-white flex flex-wrap gap-2"
                   variants={container}
                   initial="hidden"
                   animate="visible"
@@ -167,7 +167,7 @@ export default function HomePage() {
 
                 <motion.p
                   key="line2"
-                  className=" text-lg md:text-[40px] font-semibold text-gray-200 mt-4 flex flex-wrap gap-1 md:gap-4"
+                  className=" text-lg md:text-[40px] font-elegant tracking-wide leading-snug font-semibold text-gray-200 mt-4 flex flex-wrap gap-1 md:gap-4"
                   variants={container}
                   initial="hidden"
                   animate="visible"
@@ -186,10 +186,10 @@ export default function HomePage() {
       </section>
 
       {/* Categories */}
-      <section className="py-2 px-4 md:px-16 flex flex-col gap-10 bg-[#def0dd]">
+      <section className="py-2 px-4 md:px-16 flex flex-col gap-10 bg-[#e4f3e4]">
          <div className="py-10 ">
       <h2 className="text-3xl font-semibold text-center mb-6">
-        Explore Our Categories
+        Explore Our Product Categories
       </h2>
 
       <Swiper
@@ -282,7 +282,7 @@ export default function HomePage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="bg-[#e6f6e5] md:py-16 py-8 px-6 md:px-20 text-center border-t border-gray-200">
+      <section className="bg-[#e4f3e4] md:py-16 py-8 px-6 md:px-20 text-center border-t border-gray-200">
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
           <h2 className="text-4xl font-bold tracking-wide uppercase text-gray-900">
             Our Vision & Mission
@@ -326,7 +326,7 @@ export default function HomePage() {
       </section>
 
       {/* Journey Video / Slideshow */}
-      <section className="py-12 px-4 md:px-16 bg-[#def0dd] text-center md:text-left">
+      <section className="py-12 px-4 md:px-16 bg-[#e4f3e4] text-center md:text-left">
         <h2 className="text-3xl font-semibold mb-10 text-center">
           Journey of <span className="text-yellow-700">BrassMan India</span>
         </h2>
@@ -454,7 +454,7 @@ export default function HomePage() {
           </div>
 
           <div className="flex items-start gap-4">
-            <MapPin className="text-blue-400 mt-1" size={24} />
+            <MapPin className="text-blue-400 mt-1 hidden md:block" size={24} />
             <div className="hidden md:block">
               <h3 className="text-xl font-semibold mb-1 text-blue-400">Office</h3>
               <p className="text-sm leading-relaxed">
@@ -470,7 +470,7 @@ export default function HomePage() {
 
 
       {/* Testimonials */}
-      <section className="py-12 px-4 md:px-16 bg-[#ecf6eb] text-center">
+      <section className="py-12 px-4 md:px-16 bg-[#e4f3e4] text-center">
         <h2 className="text-3xl font-semibold mb-8">What Our Clients Say</h2>
 
         <Swiper

@@ -26,7 +26,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="w-full px-6 py-4 shadow-sm bg-[#def0dd] z-50 relative">
+    <header className="w-full px-6 py-4 shadow-sm bg-[#e4f3e4] z-50 relative">
       <div className="max-w-7xl mx-auto flex flex-col items-start justify-center">
         {/* Top: Search + Logo + Hamburger */}
         <div className="w-full flex items-center justify-between md:mb-6">
@@ -35,8 +35,8 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center space-x-2">
-            <span className="text-2xl font-bold">A</span>
-            <div className="h-6 w-[1px] bg-gray-400"></div>
+            {/* <span className="text-2xl font-bold">A</span> */}
+            {/* <div className="h-6 w-[1px] bg-gray-400"></div> */}
             <span className="text-xl tracking-widest font-medium">
               BrassMan India
             </span>
@@ -57,8 +57,9 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <nav className="hidden w-full md:flex flex-wrap justify-center gap-6 text-sm font-medium tracking-wider text-gray-800 relative">
           {navLinks.map((link, index) => (
-            <a key={index} href="#" className="hover:text-black">
+            <a key={index} href="#" className="relative group hover:text-black">
               {link}
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
 
@@ -72,7 +73,7 @@ const Navbar = () => {
             </button>
 
             {dropdownOpen && (
-              <div className="absolute top-full right-0 mt-2 w-48 bg-white shadow-lg rounded-md py-2 z-10">
+              <div className="absolute top-full right-0 left-[3%] mt-2 w-48 bg-[#e4f3e4] shadow-lg rounded-md py-2 z-10">
                 {productDropdown.map((item, idx) => (
                   <a
                     key={idx}
@@ -91,11 +92,15 @@ const Navbar = () => {
         {menuOpen && (
           <div className="md:hidden flex flex-col items-start text-left gap-4 mt-4 text-sm font-medium tracking-wider text-gray-800">
             {navLinks.map((link, index) => (
-              <a key={index} href="#" className="hover:text-black">
+              <a
+                key={index}
+                href="#"
+                className="relative group hover:text-black"
+              >
                 {link}
+                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-black transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
-
             {/* Mobile Dropdown */}
             <div className="w-full">
               <button
@@ -108,11 +113,7 @@ const Navbar = () => {
               {dropdownOpen && (
                 <div className="pl-4 flex flex-col gap-2">
                   {productDropdown.map((item, idx) => (
-                    <a
-                      key={idx}
-                      href="#"
-                      className="hover:text-black"
-                    >
+                    <a key={idx} href="#" className="hover:text-black">
                       {item}
                     </a>
                   ))}
