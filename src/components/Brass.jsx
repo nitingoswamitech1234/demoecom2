@@ -62,17 +62,17 @@ export default function HomePage() {
     { name: "Curtain Holders", image: "/curtain.jpg", price: 499 },
   ];
 
-  //  const [quantities, setQuantities] = useState(
-  //     categories.map(() => 1) // default quantity 1 for each product
-  //   );
+   const [quantities, setQuantities] = useState(
+      categories.map(() => 1) // default quantity 1 for each product
+    );
 
-  // const updateQuantity = (index, change) => {
-  //   setQuantities((prev) =>
-  //     prev.map((q, i) => (i === index ? Math.max(1, q + change) : q))
-  //   );
-  // };
-  // // Duplicate for looping effect
-  // const duplicated = [...categories, ...categories];
+  const updateQuantity = (index, change) => {
+  setQuantities((prev) =>
+    prev.map((q, i) => (i === index ? Math.max(0, q + change) : q))
+  );
+};
+  // Duplicate for looping effect
+  const duplicated = [...categories, ...categories];
 
   useEffect(() => {
     const slider = sliderRef.current;
@@ -165,7 +165,7 @@ export default function HomePage() {
 
                 <motion.p
                   key="line2"
-                  className=" text-lg md:text-[40px] font-semibold text-gray-200 mt-4 flex flex-wrap gap-4"
+                  className=" text-lg md:text-[40px] font-semibold text-gray-200 mt-4 flex flex-wrap gap-1 md:gap-4"
                   variants={container}
                   initial="hidden"
                   animate="visible"
@@ -184,62 +184,67 @@ export default function HomePage() {
       </section>
 
       {/* Categories */}
-      <section className="py-12 px-4 md:px-16 flex flex-col gap-10 bg-[#def0dd]">
-        <div className="py-10 ">
-          <h2 className="text-3xl font-semibold text-center mb-6">
-            Explore Our Product Categories
-          </h2>
+      <section className="py-2 px-4 md:px-16 flex flex-col gap-10 bg-[#def0dd]">
+         <div className="py-10 ">
+      <h2 className="text-3xl font-semibold text-center mb-6">
+        Explore Our Categories
+      </h2>
 
-          <Swiper
-            modules={[Autoplay]}
-            slidesPerView={4}
-            spaceBetween={20}
-            loop={true}
-            autoplay={{ delay: 0, disableOnInteraction: false }}
-            speed={3000}
-            grabCursor={false}
-            className="px-6"
-            breakpoints={{
-              320: { slidesPerView: 1 },
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
-            }}
-          >
-            {categories.map((cat, i) => (
-              <SwiperSlide key={i}>
-                <div className="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-transform transform w-[80%] mx-auto">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="w-full h-44 object-cover"
-                  />
-                  <div className="p-4 text-center">
-                    <h3 className="text-lg font-semibold mb-1">{cat.name}</h3>
-                    <p className="text-gray-600 font-medium mb-2">
-                      ₹{cat.price}
-                    </p>
+      <Swiper
+        modules={[Autoplay]}
+        slidesPerView={4}
+        spaceBetween={20}
+        loop={true}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        speed={5000}
+        grabCursor={false}
+        className="px-6"
+        breakpoints={{
+          320: { slidesPerView: 1 },
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 4 },
+        }}
+      >
+        {categories.map((cat, i) => (
+          <SwiperSlide key={i}>
+            <div className="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-transform transform  w-[80%] mx-auto">
+              <img
+                src={cat.image}
+                alt={cat.name}
+                className="w-full h-44 object-cover"
+              />
+              <div className="p-4 text-center">
+                <h3 className="text-lg font-semibold mb-1">{cat.name}</h3>
+                <p className="text-gray-600 font-medium mb-2">₹{cat.price}</p>
 
-                    {/* Quantity input */}
-                    <div className="mb-3 flex gap-4 justify-center">
-                      <input
-                        type="number"
-                        min="1"
-                        defaultValue="1"
-                        className="border border-gray-300 rounded px-3 py-1 w-20 text-center"
-                      />
-
-                      <button className="bg-black text-white px-3 py-2 rounded-full hover:bg-gray-800 transition">
-                        Add to Cart
-                      </button>
-                    </div>
-
-                    {/* Add to cart */}
-                  </div>
+                {/* Quantity controls */}
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <button
+                    onClick={() => updateQuantity(i, -1)}
+                    className="px-2 py-1 bg-gray-200 rounded"
+                  >
+                    –
+                  </button>
+                  <span className="font-semibold">{quantities[i]}</span>
+                  <button
+                    onClick={() => updateQuantity(i, 1)}
+                    className="px-2 py-1 bg-gray-200 rounded"
+                  >
+                    +
+                  </button>
+                  <button className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition">
+                  Add to Cart
+                </button>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+
+                {/* Add to cart */}
+                
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
       </section>
 
       <section
@@ -275,7 +280,7 @@ export default function HomePage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="bg-[#e6f6e5] py-16 px-6 md:px-20 text-center border-t border-gray-200">
+      <section className="bg-[#e6f6e5] md:py-16 py-8 px-6 md:px-20 text-center border-t border-gray-200">
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
           <h2 className="text-4xl font-bold tracking-wide uppercase text-gray-900">
             Our Vision & Mission
@@ -374,7 +379,7 @@ export default function HomePage() {
       {/* Inquiry Form */}
 
       <section
-        className="relative min-h-screen flex items-center justify-center bg-cover bg-center"
+        className="relative h-[100vh]  flex items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: "url('/lock.jpg')" }}
       >
         {/* Dark transparent overlay */}
