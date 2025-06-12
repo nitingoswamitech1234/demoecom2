@@ -1,8 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Search } from 'lucide-react';
+import { useState, useEffect, useRef } from "react";
+import { Search } from "lucide-react";
 import Navbar from "./Navbar";
 import { motion, AnimatePresence } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 const sentence1 = "Home of Timeless Craftsmanship";
 const sentence2 = "ELEGANT DETAILS FOR HOMES OF CHARACTER AND CHARM";
@@ -22,10 +25,73 @@ const wordAnimation = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
 };
 
-
 export default function HomePage() {
+  // slider
 
-const [show, setShow] = useState(true);
+  const testimonials = [
+    {
+      text: "Excellent craftsmanship and fast delivery!",
+      name: "– Happy Client",
+    },
+    {
+      text: "Truly premium quality with traditional charm.",
+      name: "– Interior Designer",
+    },
+    {
+      text: "Perfect finishing, packaging, and timely delivery!",
+      name: "– Retail Partner",
+    },
+    {
+      text: "Very impressed by their attention to detail.",
+      name: "– Architect",
+    },
+    {
+      text: "Reliable, elegant, and handcrafted to perfection.",
+      name: "– Loyal Customer",
+    },
+  ];
+
+  const sliderRef = useRef(null);
+
+  const categories = [
+    { name: "Door Hardware", image: "/doorlock.jpg", price: 1499 },
+    { name: "Window Hardware", image: "/windowlock.jpg", price: 699 },
+    { name: "Kitchen Accessories", image: "/cabinet.jpg", price: 1299 },
+    { name: "Door Handle", image: "/lock.jpg", price: 599 },
+    { name: "Drawer Knobs", image: "/drawer.jpg", price: 499 },
+    { name: "Curtain Holders", image: "/curtain.jpg", price: 499 },
+  ];
+
+  //  const [quantities, setQuantities] = useState(
+  //     categories.map(() => 1) // default quantity 1 for each product
+  //   );
+
+  // const updateQuantity = (index, change) => {
+  //   setQuantities((prev) =>
+  //     prev.map((q, i) => (i === index ? Math.max(1, q + change) : q))
+  //   );
+  // };
+  // // Duplicate for looping effect
+  // const duplicated = [...categories, ...categories];
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const scrollSpeed = 1; // Increase for faster scroll
+    const interval = setInterval(() => {
+      slider.scrollLeft += scrollSpeed;
+
+      // Reset scroll when reached end
+      if (slider.scrollLeft >= slider.scrollWidth / 2) {
+        slider.scrollLeft = 0;
+      }
+    }, 20); // 20ms = ~50fps smoothness
+
+    return () => clearInterval(interval); // Cleanup
+  }, []);
+
+  const [show, setShow] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,7 +101,6 @@ const [show, setShow] = useState(true);
 
     return () => clearInterval(interval); // cleanup
   }, []);
-
 
   const images = [
     "/doorlock1.jpg",
@@ -57,10 +122,9 @@ const [show, setShow] = useState(true);
   }, [images.length]);
 
   return (
-    
     <main className="flex flex-col text-gray-800 bg-white">
       {/* navbar */}
-      <Navbar/>
+      <Navbar />
 
       {/* Hero Banner */}
       <section className="relative h-[100vh] flex items-center justify-center text-center overflow-hidden">
@@ -81,149 +145,102 @@ const [show, setShow] = useState(true);
 
         {/* Content */}
         <div className="z-10 px-4">
-      <AnimatePresence>
-        {show && (
-          <>
-            <motion.h1
-              key="line1"
-              className="text-4xl md:text-2xl text-white flex flex-wrap gap-2"
-              variants={container}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-            >
-              {sentence1.split(" ").map((word, index) => (
-                <motion.span key={index} variants={wordAnimation}>
-                  {word}
-                </motion.span>
-              ))}
-            </motion.h1>
+          <AnimatePresence>
+            {show && (
+              <div>
+                <motion.h1
+                  key="line1"
+                  className="text-4xl md:text-2xl text-white flex flex-wrap gap-2"
+                  variants={container}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                >
+                  {sentence1.split(" ").map((word, index) => (
+                    <motion.span key={index} variants={wordAnimation}>
+                      {word}
+                    </motion.span>
+                  ))}
+                </motion.h1>
 
-            <motion.p
-              key="line2"
-              className="text-lg md:text-[40px] font-semibold text-gray-200 mt-4 flex flex-wrap gap-2"
-              variants={container}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-            >
-              {sentence2.split(" ").map((word, index) => (
-                <motion.span key={index} variants={wordAnimation}>
-                  {word}
-                </motion.span>
-              ))}
-            </motion.p>
-          </>
-        )}
-      </AnimatePresence>
-    </div>
+                <motion.p
+                  key="line2"
+                  className=" text-lg md:text-[40px] font-semibold text-gray-200 mt-4 flex flex-wrap gap-4"
+                  variants={container}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                >
+                  {sentence2.split(" ").map((word, index) => (
+                    <motion.span key={index} variants={wordAnimation}>
+                      {word}
+                    </motion.span>
+                  ))}
+                </motion.p>
+              </div>
+            )}
+          </AnimatePresence>
+        </div>
       </section>
 
       {/* Categories */}
-      <section className="py-12 px-4 md:px-16 flex flex-col gap-10">
-        <h2 className="text-3xl font-semibold text-center">
-          Explore Our Categories
-        </h2>
+      <section className="py-12 px-4 md:px-16 flex flex-col gap-10 bg-[#def0dd]">
+        <div className="py-10 ">
+          <h2 className="text-3xl font-semibold text-center mb-6">
+            Explore Our Categories
+          </h2>
 
-        <div className="flex flex-wrap justify-center gap-6">
-          {[
-            {
-              name: "Door Hardware",
-              image: "/doorlock.jpg",
-            },
-            {
-              name: "Window Hardware",
-              image: "/windowlock.jpg",
-            },
-            {
-              name: "Kitchen Accessories",
-              image: "/cabinet.jpg",
-            },
-            {
-              name: "Door Handle",
-              image: "/lock.jpg",
-            },
-          ].map((category, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-lg w-64 overflow-hidden shadow hover:shadow-lg transition duration-300 transform hover:scale-105"
-            >
-              <div className="overflow-hidden">
-                <img
-                  src={category.image}
-                  alt={category.name}
-                  className="w-full h-52 object-contain transition-transform duration-500 ease-in-out hover:scale-110"
-                />
-              </div>
-              <div className="p-5 text-center">
-                <h3 className="text-xl font-medium">{category.name}</h3>
-                <button className="mt-4 bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition">
-                  View
-                </button>
-              </div>
-            </div>
-          ))}
+          <Swiper
+            modules={[Autoplay]}
+            slidesPerView={4}
+            spaceBetween={20}
+            loop={true}
+            autoplay={{ delay: 0, disableOnInteraction: false }}
+            speed={3000}
+            grabCursor={false}
+            className="px-6"
+            breakpoints={{
+              320: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 4 },
+            }}
+          >
+            {categories.map((cat, i) => (
+              <SwiperSlide key={i}>
+                <div className="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-transform transform w-[80%] mx-auto">
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    className="w-full h-44 object-cover"
+                  />
+                  <div className="p-4 text-center">
+                    <h3 className="text-lg font-semibold mb-1">{cat.name}</h3>
+                    <p className="text-gray-600 font-medium mb-2">
+                      ₹{cat.price}
+                    </p>
+
+                    {/* Quantity input */}
+                    <div className="mb-3 flex gap-4 justify-center">
+                      <input
+                        type="number"
+                        min="1"
+                        defaultValue="1"
+                        className="border border-gray-300 rounded px-3 py-1 w-20 text-center"
+                      />
+
+                      <button className="bg-black text-white px-3 py-2 rounded-full hover:bg-gray-800 transition">
+                        Add to Cart
+                      </button>
+                    </div>
+
+                    {/* Add to cart */}
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </section>
-
-      {/* Product Catalogue */}
-      {/* <section className="py-12 px-4 md:px-16">
-        <h2 className="text-3xl font-semibold text-center mb-8">Catalogue</h2>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            {
-              id: 1,
-              image: "/doorlock1.jpg",
-              name: "Antique Brass Door Lock",
-              description:
-                "Elegant handcrafted brass door lock with vintage finish.",
-              price: 1499,
-            },
-            {
-              id: 2,
-              image: "/doorlock3.jpg",
-              name: "Classic Door Handle",
-              description: "Durable handle with a matte black texture.",
-              price: 899,
-            },
-            {
-              id: 3,
-              image: "/cabinet.jpg",
-              name: "Premium Brass Knob",
-              description:
-                "Solid brass knob suitable for cabinets and drawers.",
-              price: 599,
-            },
-          ].map((product) => (
-            <div key={product.id} className="border p-4 flex flex-col gap-2">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="h-40 object-cover"
-              />
-              <h3 className="text-lg font-bold">{product.name}</h3>
-              <p className="text-sm text-gray-600">{product.description}</p>
-              <p className="text-md font-semibold">₹{product.price}</p>
-
-              <form>
-                <input
-                  type="number"
-                  min="1"
-                  defaultValue="1"
-                  className="border px-2 py-1 w-16"
-                />
-                <button
-                  type="submit"
-                  className="ml-2 px-4 py-1 bg-black text-white rounded-full"
-                >
-                  Add to Cart
-                </button>
-              </form>
-            </div>
-          ))}
-        </div>
-      </section> */}
 
       <section
         className="relative h-[100vh] flex items-center justify-center text-center transition-all duration-1000"
@@ -258,19 +275,27 @@ const [show, setShow] = useState(true);
       </section>
 
       {/* Vision & Mission */}
-      <section className="bg-white py-16 px-6 md:px-20 text-center border-t border-gray-200">
-  <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
-    <h2 className="text-4xl font-bold tracking-wide uppercase text-gray-900">
-      Our Vision & Mission
-    </h2>
-    <div className="w-16 h-[2px] bg-gray-300 mb-2" />
+      <section className="bg-[#e6f6e5] py-16 px-6 md:px-20 text-center border-t border-gray-200">
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
+          <h2 className="text-4xl font-bold tracking-wide uppercase text-gray-900">
+            Our Vision & Mission
+          </h2>
+          <div className="w-16 h-[2px] bg-gray-600 mb-2" />
 
-    <p className="text-lg leading-relaxed text-gray-600">
-      We are committed to preserving India’s rich heritage of craftsmanship by blending timeless tradition
-      with refined innovation — creating pieces that reflect elegance, integrity, and enduring quality.
-    </p>
-  </div>
-</section>
+          <p className="text-lg leading-relaxed text-gray-600">
+            We take pride in preserving the timeless heritage of Indian
+            craftsmanship — a tradition built on passion, precision, and
+            artistry passed down through generations. Our creations are a
+            seamless fusion of cultural richness and contemporary innovation,
+            designed to bring character and elegance into modern living spaces.
+            Each piece we craft is more than just a product; it is a reflection
+            of integrity, beauty, and enduring quality. We aim to celebrate and
+            elevate traditional techniques while shaping them into forms that
+            resonate with today’s lifestyles, ensuring that India’s artistic
+            soul continues to shine on a global stage.
+          </p>
+        </div>
+      </section>
 
       <section
         className="relative h-[100vh] flex items-center justify-center text-center"
@@ -286,59 +311,66 @@ const [show, setShow] = useState(true);
         {/* Content */}
         <div className="relative z-10 px-4 text-white flex flex-col items-center">
           <h2 className="text-4xl md:text-6xl font-bold">HOW TO BUY</h2>
-          <p className="text-lg md:text-xl mt-2">From The Anvil Products</p>
+          {/* <p className="text-lg md:text-xl mt-2">From The Anvil Products</p> */}
           <button className="mt-6 bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition">
             SHOP NOW
           </button>
         </div>
       </section>
 
+      {/* Journey Video / Slideshow */}
+      <section className="py-12 px-4 md:px-16 bg-[#def0dd] text-center md:text-left">
+        <h2 className="text-3xl font-semibold mb-10 text-center">
+          Journey of <span className="text-yellow-700">BrassMan India</span>
+        </h2>
 
-    {/* Journey Video / Slideshow */}
-      <section className="py-12 px-4 md:px-16 bg-white text-center">
-  <h2 className="text-3xl font-semibold mb-6">
-    Journey of <span className="text-yellow-600">BrassMan India</span>
-  </h2>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10 max-w-6xl mx-auto">
+          {/* Left: Milestones */}
+          <div className="flex flex-col gap-6 w-full md:w-1/2">
+            <div className="bg-[#ecf6eb] p-6 rounded-lg shadow hover:shadow-md transition">
+              <h3 className="text-xl font-bold text-yellow-700 mb-2">
+                20+ Years Legacy
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Serving quality brassware products globally since 2004.
+              </p>
+            </div>
 
-  {/* Embedded YouTube Video */}
-  <div className="aspect-video bg-black mx-auto max-w-4xl rounded-lg overflow-hidden shadow-lg mb-8">
-    <iframe
-      className="w-full h-full"
-      src="https://www.youtube.com/embed/your_video_id"
-      title="BrassMan Journey"
-      frameBorder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    ></iframe>
-  </div>
+            <div className="bg-[#ecf6eb] p-6 rounded-lg shadow hover:shadow-md transition">
+              <h3 className="text-xl font-bold text-yellow-700 mb-2">
+                Global Reach
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Trusted by over 300+ retailers and distributors worldwide.
+              </p>
+            </div>
 
-  {/* Company Milestones or Highlights */}
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-    <div className="bg-yellow-50 p-6 rounded-lg shadow hover:shadow-md transition">
-      <h3 className="text-xl font-bold text-yellow-700 mb-2">20+ Years Legacy</h3>
-      <p className="text-gray-600 text-sm">
-        Serving quality brassware products globally since 2004.
-      </p>
-    </div>
+            <div className="bg-[#ecf6eb] p-6 rounded-lg shadow hover:shadow-md transition">
+              <h3 className="text-xl font-bold text-yellow-700 mb-2">
+                Modern Craftsmanship
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Blending traditional Indian craft with modern design.
+              </p>
+            </div>
+          </div>
 
-    <div className="bg-yellow-50 p-6 rounded-lg shadow hover:shadow-md transition">
-      <h3 className="text-xl font-bold text-yellow-700 mb-2">Global Reach</h3>
-      <p className="text-gray-600 text-sm">
-        Trusted by over 300+ retailers and distributors worldwide.
-      </p>
-    </div>
+          {/* Right: YouTube Video */}
+          <div className="w-full md:w-1/2">
+            <div className="aspect-video bg-black rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/your_video_id"
+                title="BrassMan Journey"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <div className="bg-yellow-50 p-6 rounded-lg shadow hover:shadow-md transition">
-      <h3 className="text-xl font-bold text-yellow-700 mb-2">Modern Craftsmanship</h3>
-      <p className="text-gray-600 text-sm">
-        Blending traditional Indian craft with modern design.
-      </p>
-    </div>
-  </div>
-</section>
-
-
-      
       {/* Inquiry Form */}
 
       <section
@@ -395,30 +427,32 @@ const [show, setShow] = useState(true);
       </section>
 
       {/* Testimonials */}
-      <section className="py-12 px-4 md:px-16 bg-gray-100 text-center">
-        <h2 className="text-3xl font-semibold mb-6">What Our Clients Say</h2>
-        <div className="flex flex-wrap justify-center gap-6">
-          {[1, 2].map((t) => (
-            <div key={t} className="w-80 bg-white p-4 shadow rounded-lg">
-              <p className="italic text-gray-600">
-                "Excellent craftsmanship and fast delivery!"
-              </p>
-              <p className="mt-2 font-semibold">– Happy Client</p>
-            </div>
+      <section className="py-12 px-4 md:px-16 bg-[#ecf6eb] text-center">
+        <h2 className="text-3xl font-semibold mb-8">What Our Clients Say</h2>
+
+        <Swiper
+          modules={[Autoplay]}
+          slidesPerView={3}
+          spaceBetween={30}
+          loop={true}
+          autoplay={{ delay: 0, disableOnInteraction: false }}
+          speed={3000}
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {testimonials.map((item, i) => (
+            <SwiperSlide key={i}>
+              <div className="w-full bg-white p-6 shadow-md rounded-xl max-w-xs mx-auto">
+                <p className="italic text-gray-600">"{item.text}"</p>
+                <p className="mt-3 font-semibold text-gray-800">{item.name}</p>
+              </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </section>
-
-
-      {/* Gallery */}
-      {/* <section className="py-12 px-4 md:px-16 bg-gray-50">
-        <h2 className="text-3xl font-semibold text-center mb-6">Gallery</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[1, 2, 3, 4].map((g) => (
-            <div key={g} className="h-40 bg-gray-300"></div>
-          ))}
-        </div>
-      </section> */}
 
       {/* Footer */}
       <footer className="py-8 px-4 md:px-16 bg-black text-white text-center flex flex-col items-center gap-4">

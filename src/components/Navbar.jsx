@@ -16,11 +16,11 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="w-full px-6 py-4 shadow-sm bg-white z-50 relative">
+    <header className="w-full px-6 py-4 shadow-sm bg-[#def0dd] z-50 relative">
       <div className="max-w-7xl mx-auto flex flex-col items-start justify-center">
         {/* Top: Search + Logo + Hamburger */}
-        <div className="w-full flex items-center justify-between mb-6">
-          <div className="text-gray-700 cursor-pointer">
+        <div className="w-full  flex items-center justify-between mb-6">
+          <div className="text-gray-700 hidden md:block cursor-pointer">
             <Search size={20} />
           </div>
 
@@ -45,7 +45,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex flex-wrap justify-center gap-6 text-sm font-medium tracking-wider text-gray-800">
+        <nav className="hidden  w-full md:flex flex-wrap justify-center gap-6 text-sm font-medium tracking-wider text-gray-800">
           {navLinks.map((link, index) => (
             <a key={index} href="#" className="hover:text-black">
               {link}
