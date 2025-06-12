@@ -187,7 +187,7 @@ export default function HomePage() {
       <section className="py-12 px-4 md:px-16 flex flex-col gap-10 bg-[#def0dd]">
         <div className="py-10 ">
           <h2 className="text-3xl font-semibold text-center mb-6">
-            Explore Our Categories
+            Explore Our Product Categories
           </h2>
 
           <Swiper
