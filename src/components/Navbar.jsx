@@ -26,7 +26,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="w-full px-6 py-4 shadow-sm bg-[#e4f2f3] z-50 relative">
+    <header className="w-full px-6 py-4 shadow-sm bg-[#f3e4e6] z-50 relative">
       <div className="max-w-7xl mx-auto flex flex-col items-start justify-center">
         {/* Top: Search + Logo + Hamburger */}
         <div className="w-full flex items-center justify-between md:mb-6">
@@ -37,7 +37,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-2">
             {/* <span className="text-2xl font-bold">A</span> */}
             {/* <div className="h-6 w-[1px] bg-gray-400"></div> */}
-            <span className="text-xl tracking-widest font-montserrat font-medium">
+            <span className="text-xl tracking-widest font-cinzel font-medium">
               BrassMan India
             </span>
           </div>
@@ -55,7 +55,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden w-full md:flex flex-wrap font-montserrat justify-center gap-6 text-sm font-medium tracking-wider text-gray-800 relative">
+        <nav className="hidden w-full md:flex flex-wrap font-cinzel justify-center gap-6 text-sm font-medium tracking-wider text-gray-800 relative">
           {navLinks.map((link, index) => (
             <a key={index} href="#" className="relative group hover:text-black">
               {link}
