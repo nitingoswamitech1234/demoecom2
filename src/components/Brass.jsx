@@ -152,7 +152,7 @@ export default function HomePage() {
               <div>
                 <motion.h1
                   key="line1"
-                  className="text-4xl md:text-2xl font-elegant tracking-wide leading-snug text-white flex flex-wrap gap-2"
+                  className="text-4xl md:text-2xl font-montserrat text-white flex flex-wrap gap-2"
                   variants={container}
                   initial="hidden"
                   animate="visible"
@@ -167,7 +167,8 @@ export default function HomePage() {
 
                 <motion.p
                   key="line2"
-                  className=" text-lg md:text-[40px] font-elegant tracking-wide leading-snug font-semibold text-gray-200 mt-4 flex flex-wrap gap-1 md:gap-4"
+                  // style={{ fontFamily: 'Poppins, sans-serif' }}
+                  className=" text-lg md:text-[40px] font-montserrat text-gray-200 mt-4 flex flex-wrap gap-1 md:gap-4"
                   variants={container}
                   initial="hidden"
                   animate="visible"
@@ -186,9 +187,9 @@ export default function HomePage() {
       </section>
 
       {/* Categories */}
-      <section className="py-2 px-4 md:px-16 flex flex-col gap-10 bg-[#e4f3e4]">
+      <section className="py-2 px-4 md:px-16 flex flex-col gap-10 bg-[#e4f2f3]">
          <div className="py-10 ">
-      <h2 className="text-3xl font-semibold text-center mb-6">
+      <h2 className="text-3xl font-semibold font-poppins text-center mb-6">
         Explore Our Product Categories
       </h2>
 
@@ -234,7 +235,7 @@ export default function HomePage() {
                   >
                     +
                   </button>
-                  <button className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition">
+                  <button className="bg-black font-poppins text-white px-4 py-2 rounded-full hover:bg-gray-800 transition">
                   Add to Cart
                 </button>
                 </div>
@@ -262,8 +263,8 @@ export default function HomePage() {
 
         {/* Content */}
         <div className="relative z-10 px-4 text-white">
-          <h2 className="text-4xl md:text-6xl font-bold">BE INSPIRED</h2>
-          <button className="mt-6 bg-white text-black px-6 py-2 rounded-full font-semibold">
+          <h2 className="text-4xl font-montserrat md:text-6xl font-bold">BE INSPIRED</h2>
+          <button className="mt-6 bg-white font-poppins text-black px-6 py-2 rounded-full font-semibold">
             VIEW GALLERY
           </button>
         </div>
@@ -282,14 +283,14 @@ export default function HomePage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="bg-[#e4f3e4] md:py-16 py-8 px-6 md:px-20 text-center border-t border-gray-200">
+      <section className="bg-[#e4f2f3] md:py-16 py-8 px-6 md:px-20 text-center border-t border-gray-200">
         <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
-          <h2 className="text-4xl font-bold tracking-wide uppercase text-gray-900">
+          <h2 className="text-4xl font-poppins font-bold tracking-wide uppercase text-gray-900">
             Our Vision & Mission
           </h2>
           <div className="w-16 h-[2px] bg-gray-600 mb-2" />
 
-          <p className="text-lg leading-relaxed text-gray-600">
+          <p className="text-lg leading-relaxed font-poppins text-gray-600">
             We take pride in preserving the timeless heritage of Indian
             craftsmanship — a tradition built on passion, precision, and
             artistry passed down through generations. Our creations are a
@@ -317,33 +318,33 @@ export default function HomePage() {
 
         {/* Content */}
         <div className="relative z-10 px-4 text-white flex flex-col items-center">
-          <h2 className="text-4xl md:text-6xl font-bold">HOW TO BUY</h2>
+          <h2 className="text-4xl md:text-6xl font-poppins font-bold">HOW TO BUY</h2>
           {/* <p className="text-lg md:text-xl mt-2">From The Anvil Products</p> */}
-          <button className="mt-6 bg-white text-black px-6 py-2 rounded-full font-semibold hover:bg-gray-200 transition">
+          <button className="mt-6 bg-white text-black px-6 py-2 font-poppins rounded-full font-semibold hover:bg-gray-200 transition">
             SHOP NOW
           </button>
         </div>
       </section>
 
       {/* Journey Video / Slideshow */}
-      <section className="py-12 px-4 md:px-16 bg-[#e4f3e4] text-center md:text-left">
-        <h2 className="text-3xl font-semibold mb-10 text-center">
+      <section className="py-12 px-4 md:px-16 bg-[#e4f2f3] text-center md:text-left">
+        <h2 className="text-3xl font-semibold mb-10 font-poppins text-center">
           Journey of <span className="text-yellow-700">BrassMan India</span>
         </h2>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-10 max-w-6xl mx-auto">
           {/* Left: Milestones */}
           <div className="flex flex-col gap-6 w-full md:w-1/2">
-            <div className="bg-[#ecf6eb] p-6 rounded-lg shadow hover:shadow-md transition">
-              <h3 className="text-xl font-bold text-yellow-700 mb-2">
+            <div className="bg-[#e4f2f3] p-6 rounded-lg shadow hover:shadow-md transition">
+              <h3 className="text-xl font-poppins font-bold text-yellow-700 mb-2">
                 20+ Years Legacy
               </h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 font-poppins text-sm">
                 Serving quality brassware products globally since 2004.
               </p>
             </div>
 
-            <div className="bg-[#ecf6eb] p-6 rounded-lg shadow hover:shadow-md transition">
+            <div className="bg-[#e4f2f3] font-poppins p-6 rounded-lg shadow hover:shadow-md transition">
               <h3 className="text-xl font-bold text-yellow-700 mb-2">
                 Global Reach
               </h3>
@@ -352,7 +353,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="bg-[#ecf6eb] p-6 rounded-lg shadow hover:shadow-md transition">
+            <div className="bg-[#e4f2f3] font-poppins p-6 rounded-lg shadow hover:shadow-md transition">
               <h3 className="text-xl font-bold text-yellow-700 mb-2">
                 Modern Craftsmanship
               </h3>
@@ -391,7 +392,7 @@ export default function HomePage() {
       <div className="relative z-10 bg-black bg-opacity-60 p-8 rounded-md w-full md:w-[60%] grid md:grid-cols-2 gap-8 items-center">
         {/* Contact Form */}
         <div>
-          <h2 className="text-white text-3xl font-semibold uppercase text-center md:text-left">
+          <h2 className="text-white text-3xl font-poppins font-semibold uppercase text-center md:text-left">
             HAVE A <span className="text-blue-400">QUESTION?</span>
           </h2>
           <div className="h-1 w-20 bg-blue-400 my-4 mx-auto md:mx-0"></div>
@@ -470,7 +471,7 @@ export default function HomePage() {
 
 
       {/* Testimonials */}
-      <section className="py-12 px-4 md:px-16 bg-[#e4f3e4] text-center">
+      <section className="py-12 px-4 md:px-16 bg-[#e4f2f3] text-center">
         <h2 className="text-3xl font-semibold mb-8">What Our Clients Say</h2>
 
         <Swiper

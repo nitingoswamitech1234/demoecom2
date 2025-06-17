@@ -7,7 +7,17 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        elegant: ['"Playfair Display"', 'serif'],
+        inter: ['Inter', 'sans-serif'],
+        playfair: ['Playfair Display', 'serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        dmsans: ['DM Sans', 'sans-serif'],
+        raleway: ['Raleway', 'sans-serif'],
+        manrope: ['Manrope', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        abril: ['Abril Fatface', 'serif'],
+        bebas: ['Bebas Neue', 'cursive'],
+        cinzel: ['Cinzel', 'serif'],
+        cormorant: ['Cormorant Garamond', 'serif'],
       },
       keyframes: {
         marquee: {
