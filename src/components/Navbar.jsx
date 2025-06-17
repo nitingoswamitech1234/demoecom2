@@ -73,12 +73,12 @@ const Navbar = () => {
             </button>
 
             {dropdownOpen && (
-              <div className="absolute top-full right-0 left-[3%] mt-2 w-48 bg-[#e4f2f3] shadow-lg rounded-md py-2 z-10">
+              <div className="absolute top-full right-0  mt-2 w-48 bg-[#f3e4e6] shadow-lg rounded-md py-2 z-10">
                 {productDropdown.map((item, idx) => (
                   <a
                     key={idx}
                     href="#"
-                    className="block px-4 py-2 hover:bg-gray-100"
+                    className="block px-4 py-2 hover:bg-[#f3e4e6]"
                   >
                     {item}
                   </a>
