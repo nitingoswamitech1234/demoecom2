@@ -558,7 +558,7 @@ const HomePage = () => {
               Timeless Fittings  <br /> for Windows & Doors
             </h1>
             <p className="text-slate-600 mb-6">
-              Crafted for those who appreciate enduring quality, we’re the UK’s trusted trade-only importer and distributor of solid brass ironmongery.
+              Crafted for those who appreciate enduring quality, we’re the  trusted trade-only importer and distributor of solid brass ironmongery.
               From classic sash windows to period-style doors — our fittings combine traditional craftsmanship with modern precision.
             </p>
             <button className="bg-sky-700 text-white px-5 py-2 rounded-md hover:bg-sky-800">
